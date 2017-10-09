@@ -51,7 +51,9 @@
     "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
-    "react": "^0.14.7",
+    "lodash": "^4.17.4",
+    "react": "^0.14.9",
+    "react-debounce-input": "^3.1.0",
     "react-dom": "^0.14.7"
   }
 }

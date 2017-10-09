@@ -1,2 +1,6 @@
-export const NICE = 'pink';
-export const SUPER_NICE = 'darkred';
+export const ApproveColor = 'green';
+export const DeclaineColor = 'red';
+
+// input {
+//     border: 1px solid black;
+// }

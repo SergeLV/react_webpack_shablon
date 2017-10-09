@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { App } from './App';
+import { Search } from './App2';
 
-render(<App />, document.getElementById('root'));
+
+// render(<App DefValueField={''} MinLength = {2} />, document.getElementById('username'));
+render(<Search/>, document.getElementById('username'));
