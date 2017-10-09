@@ -8,14 +8,14 @@ class Search extends React.Component {
         this.state = {
             search: '',
             debounced: '',
-
+            textcorrect: false,
         };
         this.onSearch$ = new Rx.Subject();
         this.onSearch = this.onSearch.bind(this);
     }
     componentDidMount(){
         this.subscription = this.onSearch$
-            .debounceTime(300)
+            .debounceTime(this.props.DelayTime)
             .subscribe(debounced => this.setState({ debounced }));
     }
 
@@ -26,16 +26,26 @@ class Search extends React.Component {
     }
 
     onSearch(e) {
-        const search = e.target.value;
+        console.log(this.props.MinLength);
+        const search = e.target.value,
+        minlenght = this.props.MinLength;
         this.setState({ search });
         this.onSearch$.next(search);
+        console.log(search.length,minlenght);
+        if (search.length>minlenght) {
+            this.setState({ textcorrect:true });
+        } else
+        {
+            this.setState({ textcorrect:false });
+        }
     }
 
     render() {
         const { search, debounced } = this.state;
         return (
             <div>
-                <input type="text" value={search} onChange={this.onSearch} />
+                <input type="text" value={search} onChange={this.onSearch}
+                       style={{borderColor : this.state.textcorrect ? ApproveColor : DeclaineColor }}/>
                 <div>debounced value: {debounced}</div>
             </div>
         );
@@ -43,6 +53,6 @@ class Search extends React.Component {
 }
 
 ReactDOM.render(
-    <Search />,
+    <Search MinLength = {2} DelayTime = {500} />,
     document.getElementById('root')
 );
