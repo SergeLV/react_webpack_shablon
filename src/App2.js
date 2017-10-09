@@ -26,12 +26,10 @@ class Search extends React.Component {
     }
 
     onSearch(e) {
-        console.log(this.props.MinLength);
         const search = e.target.value,
         minlenght = this.props.MinLength;
         this.setState({ search });
         this.onSearch$.next(search);
-        console.log(search.length,minlenght);
         if (search.length>minlenght) {
             this.setState({ textcorrect:true });
         } else
