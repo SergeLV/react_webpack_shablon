@@ -72,14 +72,14 @@ export default class Search extends React.Component {
 
     checkString(str) {
         var re = /^[A-zА-яЁёєЄїЇіІ]+$/;
-        if ('string',re.test(str)==true) {
+        if (re.test(str)==true) {
             return true;
         } else return false;
     }
 
     checkNumber(str) {
         var re = /^\d+$/;
-        if ('number',re.test(str)==true) {
+        if (re.test(str)==true) {
             return true;
         } else return false;
     }
