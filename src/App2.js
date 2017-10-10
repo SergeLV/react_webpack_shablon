@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {ApproveColor, DeclaineColor} from './colors';
 
-class Search extends React.Component {
+export default class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,7 +62,6 @@ class Search extends React.Component {
 
     checkEmail(str) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        console.log('re>>>',re.test(str));
         if (re.test(str)==true) {
             return true;
         } else return false;
@@ -73,7 +72,6 @@ class Search extends React.Component {
 
     checkString(str) {
         var re = /^[A-zА-яЁёєЄїЇіІ]+$/;
-        console.log('re>>>',re.test(str));
         if ('string',re.test(str)==true) {
             return true;
         } else return false;
@@ -81,7 +79,6 @@ class Search extends React.Component {
 
     checkNumber(str) {
         var re = /^\d+$/;
-        console.log('re>>>',re.test(str));
         if ('number',re.test(str)==true) {
             return true;
         } else return false;
@@ -118,7 +115,6 @@ class Search extends React.Component {
 
         this.setState({search});
         this.onSearch$.next(search);
-        console.log( this.checkOnType(TypeInput, search));
         if (search.length >= minlenght && search.length <= maxlength && this.checkOnType(TypeInput, search)) {
             this.setState({textcorrect: true});
         } else {
