@@ -152,26 +152,26 @@ export default class Search extends React.Component {
     //TypeInput={'phonenumber'} or TypeInput={'email'} or TypeInput={'string'} or TypeInput={'number'} or TypeInput={'any'}
 ReactDOM.render(
     <Search MinLength={10} MaxLength={10} DelayTime={500} TypeInput={'phonenumber'}/>,
-    document.getElementById('phonenumber'),
+    document.getElementById('phonenumber')
 );
 ReactDOM.render(
     <Search MinLength={7} MaxLength={40} DelayTime={500} TypeInput={'email'}/>,
-    document.getElementById('email'),
+    document.getElementById('email')
 );
 
 ReactDOM.render(
     <Search MinLength={2} MaxLength={40} DelayTime={500} TypeInput={'string'}/>,
-    document.getElementById('string'),
+    document.getElementById('string')
 );
 
 ReactDOM.render(
     <Search MinLength={2} MaxLength={40} DelayTime={500} TypeInput={'number'}/>,
-    document.getElementById('number'),
+    document.getElementById('number')
 );
 
 ReactDOM.render(
     <Search MinLength={2} MaxLength={40} DelayTime={500} TypeInput={'any'}/>,
-    document.getElementById('any'),
+    document.getElementById('any')
 );
 
 
