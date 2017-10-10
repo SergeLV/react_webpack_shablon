@@ -15,11 +15,17 @@ class Search extends React.Component {
         this.onSearch = this.onSearch.bind(this);
     }
 
+
+
+
     componentDidMount() {
         this.subscription = this.onSearch$
             .debounceTime(this.props.DelayTime)
             .subscribe(debounced => this.setState({debounced}));
     }
+
+
+
 
     componentWillUnmount() {
         if (this.subscription) {
@@ -27,15 +33,18 @@ class Search extends React.Component {
         }
     }
 
+
+
+
     checkPhoneNumber(str) {
         //0675555555 шаблон
         const lengthPhone = 10,
-        PhoneCountryOperator = ['039','050','063','067','091',
+        PhoneCountryOperator = ['039','050','063','066','067','091',
             '092','093','094','095','096','097','098','098'],
         len = str.length;
-        var reg = new RegExp('^[0-9]{10}$');
+        var re = /^[0-9]{10}$/;
 
-        if (reg.test(str)==false) {
+        if (re.test(str)==false) {
             return false;
         }
 
@@ -48,6 +57,9 @@ class Search extends React.Component {
         return true;
     }
 
+
+
+
     checkEmail(str) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         console.log('re>>>',re.test(str));
@@ -55,6 +67,9 @@ class Search extends React.Component {
             return true;
         } else return false;
     }
+
+
+
 
     checkString(str) {
         var re = /^[A-zА-яЁёєЄїЇіІ]+$/;
@@ -72,6 +87,9 @@ class Search extends React.Component {
         } else return false;
     }
 
+
+
+
     checkOnType (TypeInput, str) {
 
         switch (TypeInput) {
@@ -88,11 +106,14 @@ class Search extends React.Component {
         }
     }
 
+
+
+
     onSearch(e) {
         const search = e.target.value,
             minlenght = this.props.MinLength,
             maxlength = this.props.MaxLength,
-            // TypeInput='phonenumber' 'email' 'string' 'number'
+            // TypeInput='phonenumber' 'email' 'string' 'number' 'any'
             TypeInput = this.props.TypeInput;
 
         this.setState({search});
@@ -106,6 +127,9 @@ class Search extends React.Component {
 
 
     }
+
+
+
 
     render() {
         const {search, debounced} = this.state;
@@ -125,6 +149,9 @@ class Search extends React.Component {
      DelayTime: PropTypes.number.isRequired,
      TypeInput: PropTypes.string.isRequired
  };
+
+
+
 
     //TypeInput={'phonenumber'} or TypeInput={'email'} or TypeInput={'string'} or TypeInput={'number'} or TypeInput={'any'}
 ReactDOM.render(
